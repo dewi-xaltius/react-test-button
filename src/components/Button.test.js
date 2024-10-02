@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Button from './Button';
 
 test('Button calls the onClick function when clicked', () => {
@@ -10,7 +11,7 @@ test('Button calls the onClick function when clicked', () => {
   // Act
   render(<Button label={label} onClick={onClickMock} />);
   const button = screen.getByText(label);
-  fireEvent.click(button);
+  userEvent.click(button);
 
   // Assert
   expect(onClickMock).toHaveBeenCalled();
